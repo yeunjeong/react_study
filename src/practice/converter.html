@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Honglu() {
+      let [amounts, setAmounts] = React.useState(0);
+      let [flipped, setFlipped] = React.useState(false);
+      const handleChange = (event) => {
+        setAmounts(event.target.value);
+      };
+      const reset = () => {
+        setAmounts(0);
+      };
+      const onFlip = () => {
+        setFlipped((current) => !current);
+        setAmounts(0);
+      };
+      return (
+        <div>
+          <h2>홍루...</h2>
+          <div>
+            <label htmlFor="minutes">honglu</label>
+            <input
+              value={flipped ? amounts * 60 : amounts}
+              id="minutes"
+              placeholder="honglu.."
+              type="number"
+              onChange={handleChange}
+              disabled={flipped}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">야...</label>
+            <input
+              value={flipped ? amounts : Math.round(amounts / 60)}
+              id="hours"
+              placeholder="야.."
+              type="number"
+              onChange={handleChange}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>{flipped ? "루홍" : "홍루"}</button>
+          <br />
+          <img src="images/honglu.png" alt="My Image" width="300" />
+          <h6>minutes to hours</h6>
+        </div>
+      );
+    }
+    function Ideal() {
+      let [amounts, setAmounts] = React.useState(0);
+      let [flipped, setFlipped] = React.useState(false);
+      const handleChange = (event) => {
+        setAmounts(event.target.value);
+      };
+      const reset = () => {
+        setAmounts(0);
+      };
+      const onFlip = () => {
+        setFlipped((current) => !current);
+        setAmounts(0);
+      };
+      return (
+        <div>
+          <h2>이상...</h2>
+          <div>
+            <label htmlFor="km">ideal</label>
+            <input
+              value={flipped ? amounts * 1.60934 : amounts}
+              id="km"
+              placeholder="ideal.."
+              type="number"
+              onChange={handleChange}
+              disabled={flipped}
+            />
+          </div>
+          <div>
+            <label htmlFor="miles">야...</label>
+            <input
+              value={flipped ? amounts : amounts * 1.621371}
+              id="miles"
+              placeholder="야.."
+              type="number"
+              onChange={handleChange}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>{flipped ? "상이" : "이상"}</button>
+          <br />
+          <img src="images/ideal.png" alt="My Image" width="400" />
+          <h6>km to miles</h6>
+        </div>
+      );
+    }
+    function App() {
+      let [index, setIndex] = React.useState("0");
+      const handleChange = (event) => {
+        setIndex(event.target.value);
+      };
+      return (
+        <div>
+          <h2>귀여운...</h2>
+          <select value={index} onChange={handleChange}>
+            <option value="xx">캐릭터</option>
+            <option value="0">이상</option>
+            <option value="1">홍루</option>
+          </select>
+          <hr />
+          {index === "xx" ? <h2>누가 귀여울까요?</h2> : null}
+          {index === "0" ? <Ideal /> : null}
+          {index === "1" ? <Honglu /> : null}
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

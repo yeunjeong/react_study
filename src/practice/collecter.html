@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Image({ src, text }) {
+      return (
+        <div>
+          <img src={src} width="200" />
+          <br />
+          {<span>{text}</span>}
+          <hr />
+        </div>
+      );
+    }
+    function Btn({ value, text, index, bgColor, onClick }) {
+      return (
+        <button
+          onClick={() => onClick(value)}
+          style={{
+            backgroundColor: bgColor,
+            color: index === value ? "white" : "black",
+            padding: "10px 20px",
+            margin: "5px 5px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: 16,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    Btn.propTypes = {
+      text: PropTypes.string,
+    };
+    function App() {
+      let [index, setIndex] = React.useState("0");
+      const changeValue = (idx) => {
+        setIndex(idx);
+      };
+      return (
+        <div>
+          {index === "0" ? (
+            <Image
+              src="images\ideal.png"
+              text="빗방울은 점점 거세져만 가는구료..."
+            />
+          ) : null}
+          {index === "1" ? (
+            <Image src="images\honglu.png" text="자아~ 청소 완료!" />
+          ) : null}
+
+          <Btn
+            value="0"
+            text="이상"
+            index={index}
+            bgColor="#D8DAD9"
+            onClick={changeValue}
+          />
+          <Btn
+            value="1"
+            text="홍루"
+            index={index}
+            bgColor="#1EFBE9"
+            onClick={changeValue}
+          />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
