@@ -1,11 +1,9 @@
-import Button from "./Button";
-import styles from "./App.module.css";
+import { useState, useEffect } from "react";
 
 function App() {
   return (
     <div>
-      <h1 className={styles.title}>Kitty 홍루</h1>
-      <Button text={"홍루루"} />
+      <h1>홍루</h1>
     </div>
   );
 }
