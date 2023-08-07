@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 
 function App() {
-  return (
-    <div>
-      <h1>홍루</h1>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
