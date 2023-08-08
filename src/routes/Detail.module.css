@@ -1,0 +1,20 @@
+.header {
+  background-color: rgb(221, 229, 160);
+  /* 수직 중앙정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: blueviolet;
+}
+
+.button {
+  color: white;
+  background-color: gray;
+  border-width: 0px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}

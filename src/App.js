@@ -7,7 +7,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/movie">
+        <Route path="/movie/:id">
+          {
+            //Detail에서 useParam함수를 사용하면 id 변수의 값을 확인할 수 있다.
+          }
           <Detail />
         </Route>
         <Route path="/">
